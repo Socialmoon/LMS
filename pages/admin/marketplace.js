@@ -55,8 +55,8 @@ export default function AdminMarketplace() {
     }
   }
 
-  const totalRevenue = subscriptions.reduce((sum, sub) => sum + sub.revenue, 0)
-  const totalSubscribers = subscriptions.reduce((sum, sub) => sum + sub.subscribers, 0)
+  const totalRevenue = subscriptions.reduce((sum, sub) => sum + (sub.revenue || 0), 0)
+  const totalSubscribers = subscriptions.reduce((sum, sub) => sum + (sub.subscribers || 0), 0)
 
   if (loading) return <div>Loading...</div>
 
@@ -84,7 +84,7 @@ export default function AdminMarketplace() {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-lg font-semibold mb-2">Courses Sold</h3>
             <p className="text-3xl font-bold text-purple-600">
-              {courses.reduce((sum, course) => sum + course.enrolled, 0).toLocaleString()}
+              {courses.reduce((sum, course) => sum + (course.enrolled || 0), 0).toLocaleString()}
             </p>
             <p className="text-sm text-gray-500">Individual enrollments</p>
           </div>
@@ -172,10 +172,10 @@ export default function AdminMarketplace() {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {course.enrolled.toLocaleString()}
+                        {(course.enrolled || 0).toLocaleString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ⭐ {course.rating}
+                        ⭐ {course.rating || 'N/A'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
@@ -256,10 +256,10 @@ export default function AdminMarketplace() {
                         ${sub.price}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {sub.subscribers.toLocaleString()}
+                        {(sub.subscribers || 0).toLocaleString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        ${sub.revenue.toLocaleString()}
+                        ${(sub.revenue || 0).toLocaleString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
