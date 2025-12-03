@@ -47,6 +47,12 @@ export default function Login() {
   }
 
   const handleDevAccess = (role) => {
+    // Restrict to development environment only
+    if (process.env.NODE_ENV !== 'development') {
+      console.warn('Quick access is disabled in production')
+      return
+    }
+    
     localStorage.setItem('token', `dev-${role}-token`)
     localStorage.setItem('role', role)
     router.push(`/${role}/dashboard`)
@@ -161,43 +167,45 @@ export default function Login() {
               </div>
             </form>
 
-            {/* Quick Access Section */}
-            <div className="mt-6 pt-6 border-t border-slate-200">
-              <div className="text-center">
-                <button
-                  type="button"
-                  onClick={() => setShowQuickAccess(!showQuickAccess)}
-                  className="text-sm text-slate-600 hover:text-slate-900 font-medium transition-colors"
-                >
-                  {showQuickAccess ? 'Hide' : 'Show'} Quick Demo Access
-                </button>
-              </div>
-              
-              {showQuickAccess && (
-                <div className="mt-4 space-y-3 animate-fade-in">
-                  <p className="text-xs text-slate-500 text-center">Use these credentials for instant access:</p>
-                  <div className="grid grid-cols-1 gap-2 text-xs">
-                    <div className="flex justify-between items-center bg-slate-100 rounded-lg px-3 py-2">
-                      <span className="font-semibold text-slate-700">Admin:</span>
-                      <span>admin@example.com / admin</span>
-                    </div>
-                    <div className="flex justify-between items-center bg-slate-100 rounded-lg px-3 py-2">
-                      <span className="font-semibold text-slate-700">Instructor:</span>
-                      <span>instructor@example.com / instructor</span>
-                    </div>
-                    <div className="flex justify-between items-center bg-slate-100 rounded-lg px-3 py-2">
-                      <span className="font-semibold text-slate-700">Student:</span>
-                      <span>student@example.com / student</span>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2 mt-4">
-                    <button onClick={() => handleDevAccess('student')} className="py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">Student</button>
-                    <button onClick={() => handleDevAccess('instructor')} className="py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">Instructor</button>
-                    <button onClick={() => handleDevAccess('admin')} className="py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">Admin</button>
-                  </div>
+            {/* Quick Access Section - Development Only */}
+            {process.env.NODE_ENV === 'development' && (
+              <div className="mt-6 pt-6 border-t border-slate-200">
+                <div className="text-center">
+                  <button
+                    type="button"
+                    onClick={() => setShowQuickAccess(!showQuickAccess)}
+                    className="text-sm text-slate-600 hover:text-slate-900 font-medium transition-colors"
+                  >
+                    {showQuickAccess ? 'Hide' : 'Show'} Quick Demo Access
+                  </button>
                 </div>
-              )}
-            </div>
+                
+                {showQuickAccess && (
+                  <div className="mt-4 space-y-3 animate-fade-in">
+                    <p className="text-xs text-slate-500 text-center">Use these credentials for instant access:</p>
+                    <div className="grid grid-cols-1 gap-2 text-xs">
+                      <div className="flex justify-between items-center bg-slate-100 rounded-lg px-3 py-2">
+                        <span className="font-semibold text-slate-700">Admin:</span>
+                        <span>admin@example.com / admin</span>
+                      </div>
+                      <div className="flex justify-between items-center bg-slate-100 rounded-lg px-3 py-2">
+                        <span className="font-semibold text-slate-700">Instructor:</span>
+                        <span>instructor@example.com / instructor</span>
+                      </div>
+                      <div className="flex justify-between items-center bg-slate-100 rounded-lg px-3 py-2">
+                        <span className="font-semibold text-slate-700">Student:</span>
+                        <span>student@example.com / student</span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 mt-4">
+                      <button onClick={() => handleDevAccess('student')} className="py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">Student</button>
+                      <button onClick={() => handleDevAccess('instructor')} className="py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">Instructor</button>
+                      <button onClick={() => handleDevAccess('admin')} className="py-2 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">Admin</button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
