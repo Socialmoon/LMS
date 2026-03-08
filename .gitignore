@@ -8,6 +8,9 @@ out/
 .env*
 !.env.example
 
+# Firebase service account key (keep secret, never commit)
+scripts/serviceAccountKey.json
+
 # Logs
 logs
 *.log

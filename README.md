@@ -1,27 +1,35 @@
-# LMS (Learning Management System)
+<p align="center">
+  <img src="./public/logo.png" alt="SocialMoon LMS Logo" width="180" />
+</p>
 
-A comprehensive Learning Management System built with Next.js, Tailwind CSS, and integrated payment gateways (Stripe, PayPal, Razorpay).
+<h1 align="center">SocialMoon LMS</h1>
+
+<p align="center">A private Learning Management System built and maintained by <strong>SocialMoon</strong>.</p>
+
+> **Private Project** — This repository is proprietary to SocialMoon. Unauthorized use, distribution, or reproduction is not permitted.
+
+---
 
 ## Features
 
-### 🎓 Student Dashboard
+### Student Dashboard
 - Course enrollment and progress tracking
 - Quiz participation and certificate generation
 - Payment processing for courses
 - Discussion forums and announcements
 - Bookmark management and notifications
 
-### 👨‍🏫 Instructor Dashboard
+### Instructor Dashboard
 - Course creation and management
 - Student analytics and performance tracking
 - Marketplace integration for course sales
 
-### 🛠️ Admin Dashboard
+### Admin Dashboard
 - User management (students, instructors)
 - Course and payment oversight
 - Marketplace administration
 
-### 💳 Payment Integration
+### Payment Integration
 - Stripe payment processing
 - PayPal integration
 - Razorpay support for international payments
@@ -43,8 +51,8 @@ A comprehensive Learning Management System built with Next.js, Tailwind CSS, and
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/sainivaibhav742/LMS.git
-cd LMS
+git clone <internal-repo-url>
+cd next-lms
 ```
 
 2. Install dependencies:
@@ -54,7 +62,6 @@ npm install
 
 3. Create environment variables file (`.env.local`):
 ```env
-# Add your payment gateway keys and other environment variables here
 STRIPE_PUBLIC_KEY=your_stripe_public_key
 PAYPAL_CLIENT_ID=your_paypal_client_id
 RAZORPAY_KEY_ID=your_razorpay_key_id
@@ -78,39 +85,27 @@ npm run dev
 
 ```
 ├── components/          # Reusable React components
-│   ├── Header.js       # Main header component
-│   ├── Sidebar.js      # Navigation sidebar
-│   └── PaymentModal.js # Payment processing modal
-├── pages/              # Next.js pages and API routes
-│   ├── _app.js         # App wrapper
-│   ├── index.js        # Home page
-│   ├── login.js        # Authentication page
-│   ├── admin/          # Admin dashboard pages
-│   ├── instructor/     # Instructor dashboard pages
-│   ├── student/        # Student dashboard pages
-│   └── api/            # API routes
-├── styles/             # Global styles
-│   └── globals.css     # Global CSS with Tailwind
-├── .gitignore          # Git ignore rules
-├── next.config.js      # Next.js configuration
-├── package.json        # Dependencies and scripts
-├── postcss.config.js   # PostCSS configuration
-├── README.md           # Project documentation
-└── tailwind.config.js  # Tailwind CSS configuration
+│   ├── Header.js
+│   ├── Sidebar.js
+│   └── PaymentModal.js
+├── pages/               # Next.js pages and API routes
+│   ├── _app.js
+│   ├── index.js
+│   ├── login.js
+│   ├── admin/
+│   ├── instructor/
+│   ├── student/
+│   └── api/
+├── styles/
+│   └── globals.css
+├── public/              # Static assets
+│   └── logo.png         # SocialMoon LMS logo
+├── next.config.js
+├── package.json
+├── postcss.config.js
+└── tailwind.config.js
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-For support, email support@lms.com or join our Discord community.
+This is a private project owned by **SocialMoon**. All rights reserved.
